@@ -1,3 +1,4 @@
+from point import point
 # Develop
-print("Hello World")
-input("")
+n = int(input("Masukkan nilai N!\n"))
+ArrayOfPoint = point.randomPoint(n)
