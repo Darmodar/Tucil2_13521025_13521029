@@ -12,7 +12,10 @@ def sortPoint(matriksofPoint):
     return sorted(matriksofPoint, key=lambda a_entry: a_entry[0]) 
 
 def calculateDistance(point1, point2):
-    return ((point1.X-point2.X)**2 + (point1.Y-point2.Y)**2 + (point1.Z-point2.Z)**2)**(1/2)
+    sum = 0
+    for i in range(len(point1)):
+        sum += (point1[i] - point2[i])**2
+    return sum**(1/2)
 
 def bruteforce(matriksofPoint):
     minDistance = calculateDistance(matriksofPoint[0], matriksofPoint[1])
@@ -23,13 +26,15 @@ def bruteforce(matriksofPoint):
     return minDistance
 
 def divideAndConquer(matriksofPoint):
-    if len(matriksofPoint) <= 3:
-        return bruteforce(matriksofPoint)
+    print(matriksofPoint)
+    if len(matriksofPoint) == 2:
+        return calculateDistance(matriksofPoint[0], matriksofPoint[1])
     else:
-        mid = len(matriksofPoint)//2
+        mid = len(matriksofPoint) // 2
         left = matriksofPoint[:mid]
         right = matriksofPoint[mid:]
         minDistance = min(divideAndConquer(left), divideAndConquer(right))
+
         return minDistance
 
 
