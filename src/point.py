@@ -23,19 +23,41 @@ def bruteforce(matriksofPoint):
         for j in range(i+1, len(matriksofPoint)):
             if calculateDistance(matriksofPoint[i], matriksofPoint[j]) <= minDistance:
                 minDistance = calculateDistance(matriksofPoint[i], matriksofPoint[j])
-    return minDistance
+                point1 = matriksofPoint[i]
+                point2 = matriksofPoint[j]
+
+    return minDistance, point1, point2
 
 def divideAndConquer(matriksofPoint):
     print(matriksofPoint)
-    if len(matriksofPoint) == 2:
-        return calculateDistance(matriksofPoint[0], matriksofPoint[1])
+    if len(matriksofPoint) == 3:
+        return bruteforce(matriksofPoint)
+    elif len(matriksofPoint) == 2:
+        return calculateDistance(matriksofPoint[0], matriksofPoint[1]), matriksofPoint[0], matriksofPoint[1]
     else:
-        mid = len(matriksofPoint) // 2
-        left = matriksofPoint[:mid]
-        right = matriksofPoint[mid:]
-        minDistance = min(divideAndConquer(left), divideAndConquer(right))
+        if len(matriksofPoint) % 2 == 0:
+            mid = len(matriksofPoint) // 2
+            left = matriksofPoint[:mid]
+            right = matriksofPoint[mid:]
+            leftmin = divideAndConquer(left)
+            rightmin = divideAndConquer(right)
+            if leftmin[0] <= rightmin[0]:
+                return leftmin
+            else:
+                return rightmin
 
-        return minDistance
+        else:
+            mid = len(matriksofPoint) // 2
+            left = matriksofPoint[:mid]
+            right = matriksofPoint[mid+1:]
+            leftmin = divideAndConquer(left)
+            rightmin = divideAndConquer(right)
+            if leftmin[0] <= rightmin[0]:
+                return leftmin
+            else:
+                return rightmin
+
+         
 
 
 
