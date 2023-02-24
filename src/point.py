@@ -1,4 +1,5 @@
 import random
+import itertools
 
 def randomPoint(numberOfPoint, dimension):
     matriksOfpoint = [[]]
@@ -13,6 +14,15 @@ def sortPoint(matriksofPoint):
 
 def calculateDistance(point1, point2):
     return ((point1.X-point2.X)**2 + (point1.Y-point2.Y)**2 + (point1.Z-point2.Z)**2)**(1/2)
+
+def bruteforce(matriksofPoint):
+    minDistance = calculateDistance(matriksofPoint[0], matriksofPoint[1])
+    for i in range(len(matriksofPoint)):
+        for j in range(i+1, len(matriksofPoint)):
+            if calculateDistance(matriksofPoint[i], matriksofPoint[j]) <= minDistance:
+                minDistance = calculateDistance(matriksofPoint[i], matriksofPoint[j])
+    return minDistance
+
 
 
 
