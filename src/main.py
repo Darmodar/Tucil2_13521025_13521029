@@ -1,4 +1,8 @@
-from point import point as p
+from point import *
 # Develop
 n = int(input("Masukkan nilai N!\n"))
-ArrayOfPoint = p.sortPoint(p.randomPoint(n))
+dimensi = int(input("Masukkan nilai dimensi!\n"))
+point = randomPoint(n, dimensi)
+print(point)
+point = sortPoint(point)
+print(point)
