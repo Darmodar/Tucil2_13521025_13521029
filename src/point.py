@@ -53,9 +53,26 @@ def divideAndConquer(matriksofPoint):
             leftmin = divideAndConquer(left)
             rightmin = divideAndConquer(right)
             if leftmin[0] <= rightmin[0]:
-                return leftmin
+                distance, p1, p2 = leftmin
             else:
-                return rightmin
+                distance, p1, p2 = rightmin
+            
+            # mengecek jika terdapat point yang berada dalam jarak mid + distance
+            inMid = []
+            for point in matriksofPoint:
+                if abs(point[0] - matriksofPoint[mid][0]) < distance:
+                    inMid.append(point)
+            # sorting array of point yang berada dalam jangkauan distance
+            inMid = sorted(inMid, key=lambda p: p[1])
+            # mencari dua poin yang jaraknya kurang dari distance
+            for i in range(len(inMid)):
+                for j in range(i+1, len(inMid)):
+                    d = calculateDistance(inMid[i], inMid[j])
+                    if d < distance:
+                        p1, p2 = inMid[i], inMid[j]
+                        distance = d
+    
+            return (distance, p1, p2)
 
          
 
