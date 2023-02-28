@@ -23,7 +23,25 @@ def exit():
     print("Thank you for using our program ^v^")
     print("I hope u have a great day")
 
+def asciiart():
+    print("""                         
+              ////////          
+        ////////&@///////,     
+    (///////%%&///////%,#/////// 
+    //#//#//////#*////////////, .
+    /////((////%////(////(..,..  
+    /(//////((,//////( .    ... .
+    (///%*//(////#     .   *, ...
+    #//////#*///(    .,. .  ... 
+    ///#////////( .... ... *....
+    //(///%////(...../.........
+        (/////#/(...........    
+            (////(.......        
+                (/(...  
+    """)
+
 def program():
+    asciiart()
     n = getNPoints()
     dim = getDimension()
     matrixOfPoints = randomPoint(n, dim)

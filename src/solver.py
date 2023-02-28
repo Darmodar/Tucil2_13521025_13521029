@@ -51,11 +51,13 @@ def divideAndConquer(matriksofPoint):
             xMid = (matriksofPoint[mid-1][0] + matriksofPoint[mid][0]) / 2 
             # mengecek jika terdapat point yang berada dalam jarak mid + distance
             for point in matriksofPoint:
+                countDaC += 1
                 if abs(point[0] - xMid) <= distance:
                     inMid.append(point)
             # mencari dua poin yang jaraknya kurang dari distance
             for i in range(len(inMid)):
                 for j in range(i+1, len(inMid)):
+                    countDaC += 1
                     d = calculateDistance(inMid[i], inMid[j])
                     if d < distance:
                         p1, p2 = inMid[i], inMid[j]
@@ -79,11 +81,13 @@ def divideAndConquer(matriksofPoint):
             xMid = (matriksofPoint[mid-1][0] + matriksofPoint[mid][0]) / 2 
             # mengecek jika terdapat point yang berada dalam jarak mid + distance
             for point in matriksofPoint:
+                countDaC += 1
                 if abs(point[0] - xMid) <= distance:
                     inMid.append(point)
             # mencari dua poin yang jaraknya kurang dari distance
             for i in range(len(inMid)):
                 for j in range(i+1, len(inMid)):
+                    countDaC += 1
                     d = calculateDistance(inMid[i], inMid[j])
                     if d < distance:
                         p1, p2 = inMid[i], inMid[j]
