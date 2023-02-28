@@ -22,6 +22,7 @@ def plotting(matriksOfPoint, n, result):
 def exit():
     print("Thank you for using our program ^v^")
     print("I hope u have a great day")
+    input()
 
 def asciiart():
     print("""                         
