@@ -62,7 +62,7 @@ def program():
     print("  Point 2:", resDaC[2])
     print("  Number of operations executed:", getNOperationDaC())
     print("  Elapsed time:", round(getTimeDaC(), ndigits=2), "second(s)")
-    print("\nAbove results are executed using your PC specification below:")
+    print("\nAbove results are obtained using your PC specification below:")
     getPCSpec()
     plotting(matrixOfPoints, n, resDaC)
     exit()
