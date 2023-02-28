@@ -47,14 +47,12 @@ def divideAndConquer(matriksofPoint):
                 distance, p1, p2 = leftmin
             else:
                 distance, p1, p2 = rightmin
-            xMid = matriksofPoint[0][0] + (abs(matriksofPoint[0][0] - matriksofPoint[-1][0]))/2
-            # mengecek jika terdapat point yang berada dalam jarak mid + distance
             inMid = []
+            xMid = (matriksofPoint[mid-1][0] + matriksofPoint[mid][0]) / 2 
+            # mengecek jika terdapat point yang berada dalam jarak mid + distance
             for point in matriksofPoint:
-                if abs(point[0] - xMid) < distance:
+                if abs(point[0] - xMid) <= distance:
                     inMid.append(point)
-            # sorting array of point yang berada dalam jangkauan distance berdasarkan koordinat-y
-            inMid = sorted(inMid, key=lambda p: p[1])
             # mencari dua poin yang jaraknya kurang dari distance
             for i in range(len(inMid)):
                 for j in range(i+1, len(inMid)):
@@ -69,21 +67,20 @@ def divideAndConquer(matriksofPoint):
         else:
             mid = len(matriksofPoint) // 2
             left = matriksofPoint[:mid]
-            right = matriksofPoint[mid+1:]
+            right = matriksofPoint[mid:]
             leftmin = divideAndConquer(left)
             rightmin = divideAndConquer(right)
             if leftmin[0] <= rightmin[0]:
                 distance, p1, p2 = leftmin
             else:
                 distance, p1, p2 = rightmin
-            xMid = matriksofPoint[0][0] + (abs(matriksofPoint[0][0] - matriksofPoint[-1][0]))/2
-            # mengecek jika terdapat point yang berada dalam jarak mid + distance
+            
             inMid = []
+            xMid = (matriksofPoint[mid-1][0] + matriksofPoint[mid][0]) / 2 
+            # mengecek jika terdapat point yang berada dalam jarak mid + distance
             for point in matriksofPoint:
-                if abs(point[0] - xMid) < distance:
+                if abs(point[0] - xMid) <= distance:
                     inMid.append(point)
-            # sorting array of point yang berada dalam jangkauan distance berdasar koordinat-y
-            inMid = sorted(inMid, key=lambda p: p[1])
             # mencari dua poin yang jaraknya kurang dari distance
             for i in range(len(inMid)):
                 for j in range(i+1, len(inMid)):
