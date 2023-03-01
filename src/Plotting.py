@@ -1,6 +1,6 @@
 # from dash import dash, html, dcc
 import plotly.graph_objs as go
-import numpy as np
+
 
 def plot3D(matriksOfPoint, n, result):
 
